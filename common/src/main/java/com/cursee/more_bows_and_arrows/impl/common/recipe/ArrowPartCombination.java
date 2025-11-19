@@ -1,5 +1,6 @@
 package com.cursee.more_bows_and_arrows.impl.common.recipe;
 
+import com.cursee.more_bows_and_arrows.impl.common.registry.ModRecipeSerializers;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
@@ -32,6 +33,6 @@ public class ArrowPartCombination extends CustomRecipe {
 
   @Override
   public RecipeSerializer<?> getSerializer() {
-    return null;
+    return ModRecipeSerializers.ARROW_PART_COMBINATION;
   }
 }
