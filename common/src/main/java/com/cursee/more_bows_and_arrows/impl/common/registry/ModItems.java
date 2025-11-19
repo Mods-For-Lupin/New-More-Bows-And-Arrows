@@ -27,7 +27,7 @@ public class ModItems {
 
     consumer.accept(BOW, MoreBowsAndArrows.identifier("bow"));
     consumer.accept(BOW_PART, MoreBowsAndArrows.identifier("bow_part"));
-    
+
     consumer.accept(ARROW, MoreBowsAndArrows.identifier("arrow"));
     consumer.accept(ARROW_PART, MoreBowsAndArrows.identifier("arrow_part"));
   }

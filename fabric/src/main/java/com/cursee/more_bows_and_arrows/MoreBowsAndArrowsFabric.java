@@ -1,6 +1,7 @@
 package com.cursee.more_bows_and_arrows;
 
 import com.cursee.more_bows_and_arrows.impl.common.registry.ModItems;
+import com.cursee.more_bows_and_arrows.impl.common.registry.ModRecipeSerializers;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import net.fabricmc.api.ModInitializer;
@@ -18,6 +19,7 @@ public class MoreBowsAndArrowsFabric implements ModInitializer {
   public void onInitialize() {
 
     bind(BuiltInRegistries.ITEM, ModItems::register);
+    bind(BuiltInRegistries.RECIPE_SERIALIZER, ModRecipeSerializers::register);
 
     MoreBowsAndArrows.init();
   }

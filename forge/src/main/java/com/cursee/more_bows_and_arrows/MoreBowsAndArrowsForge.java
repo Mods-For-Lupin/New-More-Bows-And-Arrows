@@ -1,6 +1,7 @@
 package com.cursee.more_bows_and_arrows;
 
 import com.cursee.more_bows_and_arrows.impl.common.registry.ModItems;
+import com.cursee.more_bows_and_arrows.impl.common.registry.ModRecipeSerializers;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import net.minecraft.core.Registry;
@@ -25,6 +26,7 @@ public class MoreBowsAndArrowsForge {
     MoreBowsAndArrowsForge.eventBus = context.getModEventBus();
 
     bind(Registries.ITEM, ModItems::register);
+    bind(Registries.RECIPE_SERIALIZER, ModRecipeSerializers::register);
 
     MoreBowsAndArrows.init();
 
