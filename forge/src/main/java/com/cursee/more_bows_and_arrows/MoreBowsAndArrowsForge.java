@@ -23,12 +23,12 @@ public class MoreBowsAndArrowsForge {
 
   public MoreBowsAndArrowsForge(final FMLJavaModLoadingContext context) {
 
+    MoreBowsAndArrows.preInitialization();
+
     MoreBowsAndArrowsForge.eventBus = context.getModEventBus();
 
     bind(Registries.ITEM, ModItems::register);
     bind(Registries.RECIPE_SERIALIZER, ModRecipeSerializers::register);
-
-    MoreBowsAndArrows.init();
 
     if (FMLLoader.getDist() == Dist.CLIENT || FMLEnvironment.dist == Dist.CLIENT) {
       new MoreBowsAndArrowsClientForge();

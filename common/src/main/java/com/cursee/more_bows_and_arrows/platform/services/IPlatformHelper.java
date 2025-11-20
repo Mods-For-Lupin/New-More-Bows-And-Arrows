@@ -1,6 +1,7 @@
 package com.cursee.more_bows_and_arrows.platform.services;
 
 import java.nio.file.Path;
+import net.minecraft.client.Minecraft;
 
 public interface IPlatformHelper {
 
@@ -41,4 +42,8 @@ public interface IPlatformHelper {
   default Path getConfigDirectory() {
     return getGameDirectory().resolve("config");
   }
+
+  boolean isClientSide();
+
+  boolean isClientSideThread();
 }

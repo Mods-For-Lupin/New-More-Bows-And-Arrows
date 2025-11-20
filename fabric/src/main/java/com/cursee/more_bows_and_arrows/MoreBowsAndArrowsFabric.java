@@ -18,9 +18,9 @@ public class MoreBowsAndArrowsFabric implements ModInitializer {
   @Override
   public void onInitialize() {
 
+    MoreBowsAndArrows.preInitialization();
+
     bind(BuiltInRegistries.ITEM, ModItems::register);
     bind(BuiltInRegistries.RECIPE_SERIALIZER, ModRecipeSerializers::register);
-
-    MoreBowsAndArrows.init();
   }
 }
