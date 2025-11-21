@@ -1,28 +1,28 @@
 package com.cursee.more_bows_and_arrows.impl.common.item.bow;
 
 import com.cursee.more_bows_and_arrows.api.bow.IBowPart;
-import com.cursee.more_bows_and_arrows.api.bow.IBowPart.BowPartType;
+import com.cursee.more_bows_and_arrows.impl.common.registry.BowParts;
 import com.cursee.more_bows_and_arrows.platform.Services;
+import java.util.Locale;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Rarity;
+import org.jetbrains.annotations.Nullable;
 
 public class BowPartBase implements IBowPart {
 
   private final ResourceLocation id;
   private final BowPartType type;
-  private final float length;
   private final Rarity rarity;
   private final boolean effect;
 
-  public BowPartBase(ResourceLocation id, BowPartType type, float length) {
-    this(id, type, length, Rarity.COMMON, false);
+  public BowPartBase(ResourceLocation id, BowPartType type) {
+    this(id, type, Rarity.COMMON, false);
   }
 
-  public BowPartBase(ResourceLocation id, BowPartType type, float length, Rarity rarity, boolean effect) {
+  public BowPartBase(ResourceLocation id, BowPartType type, Rarity rarity, boolean effect) {
     this.id = id;
     this.type = type;
-    this.length = length;
     this.rarity = rarity;
     this.effect = effect;
     if(Services.PLATFORM.isClientSide()) {
@@ -35,9 +35,13 @@ public class BowPartBase implements IBowPart {
     return this.type;
   }
 
-  @Override
   public ResourceLocation getId() {
     return this.id;
+  }
+
+  protected void registerModelResourceLocation() {
+    BowParts.REGISTRY.registerPartModel(this,
+        new ResourceLocation(getId().getNamespace(), "bow_part/" + getId().getPath().toLowerCase(Locale.ROOT)));
   }
 
   @Override
@@ -46,32 +50,28 @@ public class BowPartBase implements IBowPart {
   }
 
   @Override
-  public Component getTooltipLine(String prefix) {
-    return null;
-  }
-
-  @Override
-  public float getLength() {
-    return 0;
+  public @Nullable Component getTooltipLine(String prefix) {
+    return Component.literal(prefix)
+        .append(Component.translatable(getTranslationKey()));
   }
 
   @Override
   public Rarity getRarity() {
-    return null;
+    return this.rarity;
   }
 
   @Override
   public boolean isEffect() {
-    return false;
-  }
-
-  @Override
-  public int getModelColor() {
-    return 0;
+    return this.effect;
   }
 
   @Override
   public boolean shouldAutoRegisterMissingItem() {
-    return false;
+    return true;
   }
+
+//  @Override
+//  public int getModelColor() {
+//    return Helpers.RGBAToInt(255, 255, 255, 255);
+//  }
 }

@@ -4,33 +4,27 @@ import com.google.common.collect.Lists;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
-import net.minecraft.ChatFormatting;
 import net.minecraft.resources.ResourceLocation;
 import oshi.util.tuples.Pair;
 
 public interface IBowModifier {
 
-  BowModifierType getType();
-
   ResourceLocation getId();
-
+  BowModifierType getType();
+  boolean isBaseModifier();
   float getDefaultValue();
 
   float getTierValue();
 
-  int getMaxTier();
-
-  boolean isBaseModifier();
-
-  List<ChatFormatting> getTooltipFormats();
-
-  String getTranslationKey();
+  int getMaxTiers();
 
   class BowModifierType {
 
     public static final BowModifierType ADDITIVE = new BowModifierType("additive", (pair) -> pair.getA() + pair.getB());
+    public static final BowModifierType SUBTRACTIVE = new BowModifierType("subtractive", (pair) -> pair.getA() - pair.getB());
     public static final BowModifierType MULTIPLICATIVE = new BowModifierType("multiplicative", (pair) -> pair.getA() * pair.getB());
-    public static final BowModifierType[] BASE_TYPES = {ADDITIVE, MULTIPLICATIVE};
+    public static final BowModifierType DIVISIVE = new BowModifierType("divisive", (pair) -> pair.getA() / pair.getB());
+    public static final BowModifierType[] BASE_TYPES = {ADDITIVE, SUBTRACTIVE, MULTIPLICATIVE, DIVISIVE};
     private static final List<BowModifierType> ALL_TYPES = Lists.newArrayList();
 
     private final String name;

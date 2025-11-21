@@ -5,13 +5,15 @@ import com.cursee.more_bows_and_arrows.api.bow.IBowPart;
 import com.cursee.more_bows_and_arrows.api.bow.IBowPart.BowPartType;
 import com.cursee.more_bows_and_arrows.api.bow.IBowPartRegistry;
 import com.cursee.more_bows_and_arrows.impl.common.item.bow.BowPartBase;
+import com.google.common.collect.ImmutableMap;
+import java.util.Collections;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 
 public class BowParts {
 
   public static final IBowPartRegistry REGISTRY = MoreBowsAndArrows.instance.getCustomRegistryManager().getRegistry(IBowPartRegistry.class);
-
-  public static void init() {
-  }
 
   public static IBowPart GRIP_SIMPLE;
   public static IBowPart GRIP_WOOD;
@@ -67,25 +69,67 @@ public class BowParts {
 //  public static IBowPart NOCK_TIPS_METAL_COBALT;
 //  public static IBowPart NOCK_TIPS_METAL_MANYULLYN;
 
+  public static void init() {
+  }
+
   public static void loadPre() {
-    GRIP_SIMPLE = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_simple"), BowPartType.GRIP, 1f));
-    GRIP_WOOD = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_wood"), BowPartType.GRIP, 1f));
-    GRIP_STONE = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_stone"), BowPartType.GRIP, 1f));
-    GRIP_BONE = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_bone"), BowPartType.GRIP, 1f));
-    GRIP_BLAZE = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_blaze"), BowPartType.GRIP, 1f));
-    GRIP_REED = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_reed"), BowPartType.GRIP, 1f));
-    GRIP_NETHERRACK = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_netherrack"), BowPartType.GRIP, 1f));
-    GRIP_OBSIDIAN = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_obsidian"), BowPartType.GRIP, 1f));
-    GRIP_UNDEAD = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_undead"), BowPartType.GRIP, 1f));
-    GRIP_PRISMARINE = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_prismarine"), BowPartType.GRIP, 1f));
-    GRIP_ICE = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_ice"), BowPartType.GRIP, 1f));
-    GRIP_SPONGE = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_sponge"), BowPartType.GRIP, 1f));
-    GRIP_ENDSTONE = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_endstone"), BowPartType.GRIP, 1f));
-    GRIP_PURPUR = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_purpur"), BowPartType.GRIP, 1f));
-    GRIP_BAMBOO = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_bamboo"), BowPartType.GRIP, 1f));
+    GRIP_SIMPLE = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_simple"), BowPartType.GRIP, Rarity.COMMON, false));
+    GRIP_WOOD = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_wood"), BowPartType.GRIP, Rarity.COMMON, false));
+    GRIP_STONE = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_stone"), BowPartType.GRIP, Rarity.COMMON, false));
+    GRIP_BONE = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_bone"), BowPartType.GRIP, Rarity.COMMON, false));
+    GRIP_BLAZE = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_blaze"), BowPartType.GRIP, Rarity.COMMON, false));
+    GRIP_REED = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_reed"), BowPartType.GRIP, Rarity.COMMON, false));
+    GRIP_NETHERRACK = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_netherrack"), BowPartType.GRIP, Rarity.COMMON, false));
+    GRIP_OBSIDIAN = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_obsidian"), BowPartType.GRIP, Rarity.COMMON, false));
+    GRIP_UNDEAD = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_undead"), BowPartType.GRIP, Rarity.COMMON, false));
+    GRIP_PRISMARINE = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_prismarine"), BowPartType.GRIP, Rarity.COMMON, false));
+    GRIP_ICE = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_ice"), BowPartType.GRIP, Rarity.COMMON, false));
+    GRIP_SPONGE = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_sponge"), BowPartType.GRIP, Rarity.COMMON, false));
+    GRIP_ENDSTONE = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_endstone"), BowPartType.GRIP, Rarity.COMMON, false));
+    GRIP_PURPUR = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_purpur"), BowPartType.GRIP, Rarity.COMMON, false));
+    GRIP_BAMBOO = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("grip_bamboo"), BowPartType.GRIP, Rarity.COMMON, false));
 
+    LIMB_SIMPLE = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("limb_simple"), BowPartType.LIMB, Rarity.COMMON, false));
+    LIMB_WOOD = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("limb_wood"), BowPartType.LIMB, Rarity.COMMON, false));
+    LIMB_HORN = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("limb_horn"), BowPartType.LIMB, Rarity.COMMON, false));
+    LIMB_FIBERGLASS = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("limb_fiberglass"), BowPartType.LIMB, Rarity.COMMON, false));
+    LIMB_CARBON_FIBER = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("limb_carbon_fiber"), BowPartType.LIMB, Rarity.COMMON, false));
+    
+    BOWSTRING_SIMPLE = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("bowstring_simple"), BowPartType.BOWSTRING, Rarity.COMMON, false));
+    BOWSTRING_SILK = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("bowstring_silk"), BowPartType.BOWSTRING, Rarity.COMMON, false));
+    BOWSTRING_HORSE_HAIR = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("bowstring_horse_hair"), BowPartType.BOWSTRING, Rarity.COMMON, false));
+    BOWSTRING_HEMP = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("bowstring_hemp"), BowPartType.BOWSTRING, Rarity.COMMON, false));
+    BOWSTRING_LINEN = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("bowstring_linen"), BowPartType.BOWSTRING, Rarity.COMMON, false));
+    BOWSTRING_RAWHIDE = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("bowstring_rawhide"), BowPartType.BOWSTRING, Rarity.COMMON, false));
+    BOWSTRING_SINEW = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("bowstring_sinew"), BowPartType.BOWSTRING, Rarity.COMMON, false));
+    
+    NOCK_TIPS_SIMPLE = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("nock_tips_simple"), BowPartType.NOCK_TIPS, Rarity.COMMON, false));
+    NOCK_TIPS_SLIME = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("nock_tips_slime"), BowPartType.NOCK_TIPS, Rarity.COMMON, false));
+    NOCK_TIPS_GEM_DIAMOND = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("nock_tips_gem_diamond"), BowPartType.NOCK_TIPS, Rarity.COMMON, false));
+    NOCK_TIPS_GEM_EMERALD = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("nock_tips_gem_emerald"), BowPartType.NOCK_TIPS, Rarity.COMMON, false));
+    NOCK_TIPS_GEM_QUARTZ = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("nock_tips_gem_quartz"), BowPartType.NOCK_TIPS, Rarity.COMMON, false));
+    NOCK_TIPS_GEM_LAPIS = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("nock_tips_gem_lapis"), BowPartType.NOCK_TIPS, Rarity.COMMON, false));
+    NOCK_TIPS_METAL_IRON = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("nock_tips_metal_iron"), BowPartType.NOCK_TIPS, Rarity.COMMON, false));
+    NOCK_TIPS_METAL_GOLD = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("nock_tips_metal_gold"), BowPartType.NOCK_TIPS, Rarity.COMMON, false));
+    NOCK_TIPS_METAL_COPPER = REGISTRY.registerPart(new BowPartBase(MoreBowsAndArrows.identifier("nock_tips_metal_copper"), BowPartType.NOCK_TIPS, Rarity.COMMON, false));
+  }
+  
+  public static void loadPost() {
+    for (IBowPart part : REGISTRY.getParts()) {
+      if (part.shouldAutoRegisterMissingItem() && REGISTRY.getItemsFromPart(part).isEmpty()) {
+        ItemStack itemStack = new ItemStack(ModItems.BOW_PART);
+        REGISTRY.setBowParts(itemStack, Collections.singleton(part));
+        REGISTRY.registerPartItem(part, itemStack);
+      }
+    }
 
+    REGISTRY.registerBaseModifiers(GRIP_WOOD, ImmutableMap.of());
 
-
+    int combinations =
+        REGISTRY.getParts(BowPartType.GRIP).size()
+            * REGISTRY.getParts(BowPartType.LIMB).size()
+            * REGISTRY.getParts(BowPartType.BOWSTRING).size()
+            * REGISTRY.getParts(BowPartType.NOCK_TIPS).size();
+    MoreBowsAndArrows.LOG.info("{} possible Bow base combinations are ready for usage!", combinations);
   }
 }

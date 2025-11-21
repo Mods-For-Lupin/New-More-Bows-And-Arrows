@@ -1,6 +1,7 @@
 package com.cursee.more_bows_and_arrows.impl.common.item.bow;
 
 import com.cursee.more_bows_and_arrows.api.bow.IBowModifier;
+import com.google.common.collect.Lists;
 import java.util.List;
 import net.minecraft.ChatFormatting;
 import net.minecraft.resources.ResourceLocation;
@@ -12,38 +13,40 @@ public class BowModifier implements IBowModifier {
   private final BowModifierType type;
   private final float defaultValue;
   private final float tierValue;
-  private final int maxTier;
+  private final int maxTiers;
   private final boolean baseModifier;
   private final List<ChatFormatting> tooltipFormats;
 
-  public BowModifier(ResourceLocation id, BowModifierType type, float defaultValue, float tierValue, int maxTier,
-      boolean baseModifier, List<ChatFormatting> tooltipFormats) {
+  public BowModifier(ResourceLocation id, BowModifierType type, float defaultValue,
+      float tierValue, int maxTiers, boolean baseModifier,
+      List<ChatFormatting> tooltipFormats) {
     this.id = id;
     this.type = type;
     this.defaultValue = defaultValue;
     this.tierValue = tierValue;
-    this.maxTier = maxTier;
+    this.maxTiers = maxTiers;
     this.baseModifier = baseModifier;
     this.tooltipFormats = tooltipFormats;
 
-    if (this.isBaseModifier()) {
+    if (isBaseModifier()) {
       this.tooltipFormats.add(ChatFormatting.ITALIC);
     }
   }
 
-  @Override
-  public BowModifierType getType() {
-    return this.type;
+  public BowModifier(ResourceLocation id, BowModifierType type, float defaultValue,
+      float tierValue, int maxTiers, boolean baseModifier,
+      ChatFormatting singleFormat) {
+    this(id, type, defaultValue, tierValue, maxTiers, baseModifier, Lists.newArrayList(singleFormat));
   }
 
   @Override
   public ResourceLocation getId() {
-    return this.id;
+    return id;
   }
 
   @Override
-  public float getDefaultValue() {
-    return this.defaultValue;
+  public BowModifierType getType() {
+    return type;
   }
 
   @Override
@@ -52,30 +55,29 @@ public class BowModifier implements IBowModifier {
   }
 
   @Override
-  public int getMaxTier() {
-    return this.maxTier;
+  public int getMaxTiers() {
+    return this.maxTiers;
   }
 
   @Override
   public boolean isBaseModifier() {
-    return this.baseModifier;
+    return baseModifier;
   }
 
   @Override
-  public List<ChatFormatting> getTooltipFormats() {
-    return this.tooltipFormats;
-  }
-
-  @Override
-  public String getTranslationKey() {
-    return "bow.modifiers." + getId().getNamespace() + ".type." + getId().getPath();
+  public float getDefaultValue() {
+    return defaultValue;
   }
 
   public float apply(float baseValue, List<Float> values) {
     float value = baseValue;
     for (Float v : values) {
-      value = type.applier().apply(new Pair<Float, Float>(value, v));
+      value = getType().applier().apply(new Pair<>(value, v));
     }
     return value;
+  }
+
+  public static int getTier(BowModifier modifier, float value) {
+    return (int) Math.ceil(value / modifier.getTierValue());
   }
 }

@@ -5,8 +5,7 @@ import java.util.Map;
 
 public class CustomRegistryManager {
 
-  private CustomRegistryManager _instance = null;
-  private Map<Class<? extends IRegistry>, IRegistry> registries = Maps.newIdentityHashMap();
+  private final Map<Class<? extends IRegistry>, IRegistry> registries = Maps.newIdentityHashMap();
 
   public <R extends IRegistry> void addRegistry(Class<R> clazz, R registry) {
     this.registries.put(clazz, registry);

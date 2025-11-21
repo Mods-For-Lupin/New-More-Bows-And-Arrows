@@ -9,6 +9,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -33,6 +34,10 @@ public class MoreBowsAndArrowsForge {
     if (FMLLoader.getDist() == Dist.CLIENT || FMLEnvironment.dist == Dist.CLIENT) {
       new MoreBowsAndArrowsClientForge();
     }
+
+    eventBus.addListener((Consumer<RegisterEvent>) event -> {
+
+    });
   }
 
   public MoreBowsAndArrowsForge() {

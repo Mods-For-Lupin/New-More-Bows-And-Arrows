@@ -11,9 +11,8 @@ import org.slf4j.LoggerFactory;
 
 public class MoreBowsAndArrows {
 
-  public static MoreBowsAndArrows instance;
   public static final Logger LOG = LoggerFactory.getLogger(Constants.MOD_NAME);
-
+  public static MoreBowsAndArrows instance;
   private final CustomRegistryManager customRegistryManager;
 
   public MoreBowsAndArrows() {
@@ -36,6 +35,7 @@ public class MoreBowsAndArrows {
   }
 
   protected CustomRegistryManager constructCustomRegistryManager() {
+
     return new CustomRegistryManager();
   }
 

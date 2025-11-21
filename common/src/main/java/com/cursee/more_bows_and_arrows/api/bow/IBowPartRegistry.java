@@ -12,7 +12,7 @@ public interface IBowPartRegistry extends IRegistry {
 
   <P extends IBowPart> P registerPart(P part);
 
-  <P extends IBowPart> void registerPartItem(@Nullable P part, ItemStack itemStack);
+  <P extends IBowPart> void registerPartItem(@Nullable P part, ItemStack item);
 
   <P extends IBowPart> void registerBaseModifiers(@Nullable P part, Map<BowModifier, Float> modifiers);
 

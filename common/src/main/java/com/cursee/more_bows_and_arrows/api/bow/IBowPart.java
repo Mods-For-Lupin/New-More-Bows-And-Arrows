@@ -7,6 +7,7 @@ import java.util.List;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Rarity;
+import org.jetbrains.annotations.Nullable;
 
 public interface IBowPart {
 
@@ -14,19 +15,15 @@ public interface IBowPart {
 
   ResourceLocation getId();
 
-  String getTranslationKey();
-
-  Component getTooltipLine(String prefix);
-
-  float getLength();
+  @Nullable Component getTooltipLine(String prefix);
 
   Rarity getRarity();
 
   boolean isEffect();
 
-  int getModelColor();
-
   boolean shouldAutoRegisterMissingItem();
+
+  String getTranslationKey();
 
   class BowPartType {
 
@@ -54,7 +51,7 @@ public interface IBowPart {
     }
 
     public String getTranslationKey() {
-      return "broom.parts." + Constants.MOD_ID + ".type." + getName() + ".name";
+      return "bow.parts." + Constants.MOD_ID + ".type." + getName() + ".name";
     }
 
     @Override

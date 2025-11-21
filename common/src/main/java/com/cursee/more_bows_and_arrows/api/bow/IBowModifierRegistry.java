@@ -10,24 +10,24 @@ import org.jetbrains.annotations.Nullable;
 public interface IBowModifierRegistry extends IRegistry {
 
   BowModifier registerModifier(BowModifier modifier);
-
-  void overrideDefaultModifierPart(BowModifier modifier, @Nullable IBowPart broomPart);
-
+  
+  void overrideDefaultModifierPart(BowModifier modifier, @Nullable IBowPart bowPart);
+  
   @Nullable IBowPart getModifierPart(BowModifier modifier);
-
+  
   void clearModifierItems();
-
+  
   void registerModifiersItem(Map<BowModifier, Float> modifiers, ItemStack item);
-
+  
   void registerModifiersItem(BowModifier modifier, float modifierValue, ItemStack item);
-
+  
   Map<BowModifier, Float> getModifiersFromItem(ItemStack item);
-
+  
   Map<ItemStack, Float> getItemsFromModifier(BowModifier modifier);
-
+  
   Collection<BowModifier> getModifiers();
-
-  Map<BowModifier, Float> getModifiers(ItemStack broomStack);
-
-  void setModifiers(ItemStack broomStack, Map<BowModifier, Float> modifiers);
+  
+  Map<BowModifier, Float> getModifiers(ItemStack bowStack);
+  
+  void setModifiers(ItemStack bowStack, Map<BowModifier, Float> modifiers);
 }
