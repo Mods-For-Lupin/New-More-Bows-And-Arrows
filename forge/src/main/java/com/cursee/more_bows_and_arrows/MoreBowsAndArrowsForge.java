@@ -20,6 +20,8 @@ public class MoreBowsAndArrowsForge {
 
   public MoreBowsAndArrowsForge(final FMLJavaModLoadingContext context) {
 
+    MoreBowsAndArrows.preInitialization();
+
     MoreBowsAndArrowsForge.eventBus = context.getModEventBus();
 
     // bind(Registries.ITEM, ModItems::register);
