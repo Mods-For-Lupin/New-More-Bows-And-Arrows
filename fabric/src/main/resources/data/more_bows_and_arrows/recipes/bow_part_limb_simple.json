@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " S ",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "more_bows_and_arrows:bow_part",
+    "custom_more_bows_and_arrows_data": {
+      "bow_parts": [
+        "more_bows_and_arrows:limb_simple"
+      ]
+    }
+  }
+}
