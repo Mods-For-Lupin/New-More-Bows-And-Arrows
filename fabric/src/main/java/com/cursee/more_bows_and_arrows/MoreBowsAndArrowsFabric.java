@@ -13,6 +13,9 @@ import net.minecraft.resources.ResourceLocation;
 
 public class MoreBowsAndArrowsFabric implements ModInitializer {
 
+  public static final Runnable duringItemRegistration = () -> BowParts.loadDuringItemRegistration();
+  public static final Runnable duringPotionRegistration = () -> BowParts.loadDuringPotionRegistration();
+
   public static <T> void bind(Registry<T> registry, Consumer<BiConsumer<T, ResourceLocation>> source) {
     source.accept((t, rl) -> Registry.register(registry, rl, t));
   }
@@ -29,15 +32,15 @@ public class MoreBowsAndArrowsFabric implements ModInitializer {
 
     // no client init from common
 
-    DynamicRegistrySetupCallback.EVENT.register(view -> {
-      view.getOptional(Registries.ITEM).ifPresent(items -> {
-        System.out.println("called code during item registration?");
-        BowParts.loadDuringItemRegistration();
-      });
-      view.getOptional(Registries.POTION).ifPresent(items -> {
-        System.out.println("called code during potion registration?");
-        BowParts.loadDuringPotionRegistration();
-      });
-    });
+//    DynamicRegistrySetupCallback.EVENT.register(view -> {
+//      view.getOptional(Registries.ITEM).ifPresent(items -> {
+//        System.out.println("called code during item registration?");
+//        BowParts.loadDuringItemRegistration();
+//      });
+//      view.getOptional(Registries.POTION).ifPresent(items -> {
+//        System.out.println("called code during potion registration?");
+//        BowParts.loadDuringPotionRegistration();
+//      });
+//    });
   }
 }
