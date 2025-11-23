@@ -1,6 +1,7 @@
 package com.cursee.more_bows_and_arrows.mixin.client;
 
 import com.cursee.more_bows_and_arrows.MoreBowsAndArrows;
+import com.cursee.more_bows_and_arrows.impl.common.registry.BowParts;
 import com.cursee.more_bows_and_arrows.platform.Services;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.TitleScreen;
@@ -19,5 +20,7 @@ public class ForgeTitleScreenMixin {
       MoreBowsAndArrows.LOG.info("This line is printed by an example mixin from Forge!");
       MoreBowsAndArrows.LOG.info("MC Version: {}", Minecraft.getInstance().getVersionType());
     }
+
+    BowParts.logCombinations();
   }
 }

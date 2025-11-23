@@ -14,15 +14,26 @@ public class BowParts {
   public static final IBowPartRegistry REGISTRY = MoreBowsAndArrows.instance.getRegistryManager().getRegistry(IBowPartRegistry.class);
 
   public static IBowPart GRIP_SIMPLE;
+  public static IBowPart GRIP_BLAZE;
+
   public static IBowPart LIMB_SIMPLE;
+  public static IBowPart LIMB_BLAZE;
+
   public static IBowPart BOWSTRING_SIMPLE;
+  public static IBowPart BOWSTRING_BLAZE;
+
   public static IBowPart NOCK_TIPS_SIMPLE;
+  public static IBowPart NOCK_TIPS_BLAZE;
 
   public static void loadDuringItemRegistration() {
     GRIP_SIMPLE = REGISTRY.registerBowPart(new BowPart(MoreBowsAndArrows.identifier("grip_simple"), BowPartType.GRIP));
+    GRIP_BLAZE = REGISTRY.registerBowPart(new BowPart(MoreBowsAndArrows.identifier("grip_blaze"), BowPartType.GRIP));
     LIMB_SIMPLE = REGISTRY.registerBowPart(new BowPart(MoreBowsAndArrows.identifier("limb_simple"), BowPartType.LIMB));
+    LIMB_BLAZE = REGISTRY.registerBowPart(new BowPart(MoreBowsAndArrows.identifier("limb_blaze"), BowPartType.LIMB));
     BOWSTRING_SIMPLE = REGISTRY.registerBowPart(new BowPart(MoreBowsAndArrows.identifier("bowstring_simple"), BowPartType.BOWSTRING));
+    BOWSTRING_BLAZE = REGISTRY.registerBowPart(new BowPart(MoreBowsAndArrows.identifier("bowstring_blaze"), BowPartType.BOWSTRING));
     NOCK_TIPS_SIMPLE = REGISTRY.registerBowPart(new BowPart(MoreBowsAndArrows.identifier("nock_tips_simple"), BowPartType.NOCK_TIPS));
+    NOCK_TIPS_BLAZE = REGISTRY.registerBowPart(new BowPart(MoreBowsAndArrows.identifier("nock_tips_blaze"), BowPartType.NOCK_TIPS));
   }
 
   public static void loadDuringPotionRegistration() {
@@ -34,6 +45,10 @@ public class BowParts {
       }
     }
 
+    logCombinations();
+  }
+
+  public static void logCombinations() {
     int combinations =
         REGISTRY.getRegisteredBowPartsOfType(BowPartType.GRIP).size() *
             REGISTRY.getRegisteredBowPartsOfType(BowPartType.LIMB).size() *

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:blaze_rod"
+    },
+    {
+      "type": "forge:nbt",
+      "item": "more_bows_and_arrows:bow_part",
+      "nbt": "{bow_parts: [\"more_bows_and_arrows:limb_simple\"]}"
+    },
+    {
+      "item": "minecraft:blaze_rod"
+    }
+  ],
+  "result": {
+    "item": "more_bows_and_arrows:bow_part",
+    "nbt": {
+      "bow_parts": [
+        "more_bows_and_arrows:limb_blaze"
+      ]
+    }
+  }
+}
