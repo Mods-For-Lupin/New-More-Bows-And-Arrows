@@ -1,12 +1,6 @@
 package com.cursee.more_bows_and_arrows;
 
-import com.cursee.more_bows_and_arrows.api.common.registry.custom.IArrowModifierRegistry;
-import com.cursee.more_bows_and_arrows.api.common.registry.custom.IArrowPartRegistry;
-import com.cursee.more_bows_and_arrows.api.common.registry.custom.IBowModifierRegistry;
-import com.cursee.more_bows_and_arrows.api.common.registry.custom.IBowPartRegistry;
-import com.cursee.more_bows_and_arrows.impl.common.registry.custom.ArrowModifierRegistry;
-import com.cursee.more_bows_and_arrows.impl.common.registry.custom.ArrowPartRegistry;
-import com.cursee.more_bows_and_arrows.impl.common.registry.custom.BowModifierRegistry;
+import com.cursee.more_bows_and_arrows.api.common.registry.IBowPartRegistry;
 import com.cursee.more_bows_and_arrows.impl.common.registry.custom.BowPartRegistry;
 import com.cursee.more_bows_and_arrows.util.CustomRegistryManager;
 import net.minecraft.resources.ResourceLocation;
@@ -26,15 +20,15 @@ public class MoreBowsAndArrows {
 
     // evilcraft's BroomPartRegistry and BroomModifierRegistry have side effects of registering events for
     // ItemTooltipEvent and RegisterEvent
-    getRegistryManager().addRegistry(IArrowModifierRegistry.class, new ArrowModifierRegistry());
-    getRegistryManager().addRegistry(IArrowPartRegistry.class, new ArrowPartRegistry());
-    getRegistryManager().addRegistry(IBowModifierRegistry.class, new BowModifierRegistry());
+    // getRegistryManager().addRegistry(IArrowModifierRegistry.class, new ArrowModifierRegistry());
+    // getRegistryManager().addRegistry(IArrowPartRegistry.class, new ArrowPartRegistry());
+    // getRegistryManager().addRegistry(IBowModifierRegistry.class, new BowModifierRegistry());
     getRegistryManager().addRegistry(IBowPartRegistry.class, new BowPartRegistry());
 
     MoreBowsAndArrows.instance = this;
   }
 
-  /// calls to the common constructor to create our singleton instance.
+  /// calls to the common constructor to create our singleton instance with a registry manager
   public static void preInitialization() {
     if (MoreBowsAndArrows.instance == null) {
       new MoreBowsAndArrows();

@@ -1,16 +1,21 @@
 package com.cursee.more_bows_and_arrows;
 
+import com.cursee.more_bows_and_arrows.impl.common.registry.BowParts;
+import com.cursee.more_bows_and_arrows.impl.common.registry.ModItems;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.fml.loading.FMLLoader;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegisterEvent;
 
 @Mod(Constants.MOD_ID)
@@ -24,12 +29,21 @@ public class MoreBowsAndArrowsForge {
 
     MoreBowsAndArrowsForge.eventBus = context.getModEventBus();
 
-    // bind(Registries.ITEM, ModItems::register);
+    bind(Registries.ITEM, ModItems::register);
     // bind(Registries.RECIPE_SERIALIZER, ModRecipeSerializers::register);
 
     if (FMLLoader.getDist() == Dist.CLIENT || FMLEnvironment.dist == Dist.CLIENT) {
       new MoreBowsAndArrowsClientForge();
     }
+
+    eventBus.addListener((Consumer<RegisterEvent>) event -> {
+      if (event.getRegistryKey().equals(Registries.ITEM)) {
+        BowParts.loadDuringItemRegistration();
+      }
+      if (event.getRegistryKey().equals(Registries.POTION)) {
+        BowParts.loadDuringPotionRegistration();
+      }
+    });
   }
 
   public MoreBowsAndArrowsForge() {
